@@ -1,0 +1,12 @@
+{
+  "FrontLeftMotor": "leftFront",
+  "FrontRightMotor": "rightFront",
+  "BackLeftMotor": "leftRear",
+  "BackRightMotor": "rightRear",
+  "Imu": "imu",
+  "ImuLogoFacing": "DOWN",
+  "ImuUsbFacing": "RIGHT",
+
+  "StrafeOdometer": "leftFront",
+  "DriveOdometer": "rightRear"
+}
