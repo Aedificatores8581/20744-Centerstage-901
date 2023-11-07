@@ -38,7 +38,7 @@ public class lift {
         liftmotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public boolean updatelift(){
-//        liftposition = liftEncoder.getCurrentPosition();
+        liftposition = liftmotor.getCurrentPosition();
         liftLimit = liftswitch.getState();
 
         if (moving){
@@ -97,78 +97,78 @@ public class lift {
         }
         return liftPower != 0;
     }
-//    public boolean liftHigh(){
-//        moving = true;
-//        liftTarget = liftHigh;
-//        liftmotor.setTargetPosition((int) liftTarget);
-//        liftposition = liftEncoder.getCurrentPosition();
-//        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//        if (liftTarget < liftposition){
-//
-//            liftPower=-1;
-//        }
-//        else{
-//            liftPower=1;
-//        }
-//        liftmotor.setPower(liftPower);
-//        return liftPower != 0;
-//    }
-//
-//    public boolean liftNum(int height){
-//        moving = true;
-//        liftTarget = height;
-//        liftmotor.setTargetPosition((int) liftTarget);
-//        liftposition = liftEncoder.getCurrentPosition();
-//        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//        if (liftTarget < liftposition){
-//
-//            liftPower=-1;
-//        }
-//        else{
-//            liftPower=1;
-//        }
-//        liftmotor.setPower(liftPower);
-//        return liftPower != 0;
-//    }
-//
-//    public boolean liftMedium(){
-//        moving = true;
-//        liftTarget = liftMedium;
-//        liftmotor.setTargetPosition((int) liftTarget);
-//        liftposition = liftEncoder.getCurrentPosition();
-//        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//        if (liftTarget < liftposition){
-//
-//            liftPower=-1;
-//        }
-//        else{
-//            liftPower=1;
-//        }
-//        liftmotor.setPower(liftPower);
-//        return liftPower != 0;
-//    }
-//
-//    public boolean liftLow(){
-//        moving = true;
-////        intaking = true;
-//        liftTarget = liftLow;
-//        liftmotor.setTargetPosition((int) liftTarget);
-//        liftposition = liftEncoder.getCurrentPosition();
-//        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//        if (liftTarget < liftposition){
-//
-//            liftPower=-1;
-//        }
-//        else{
-//            liftPower=1;
-//        }
-//        liftmotor.setPower(liftPower);
-//        return liftPower != 0;
-//    }
+    public boolean liftHigh(){
+        moving = true;
+        liftTarget = liftHigh;
+        liftmotor.setTargetPosition((int) liftTarget);
+        liftposition = liftmotor.getCurrentPosition();
+        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        if (liftTarget < liftposition){
+
+            liftPower=-1;
+        }
+        else{
+            liftPower=1;
+        }
+        liftmotor.setPower(liftPower);
+        return liftPower != 0;
+    }
+
+    public boolean liftNum(int height){
+        moving = true;
+        liftTarget = height;
+        liftmotor.setTargetPosition((int) liftTarget);
+        liftposition = liftmotor.getCurrentPosition();
+        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        if (liftTarget < liftposition){
+
+            liftPower=-1;
+        }
+        else{
+            liftPower=1;
+        }
+        liftmotor.setPower(liftPower);
+        return liftPower != 0;
+    }
+
+    public boolean liftMedium(){
+        moving = true;
+        liftTarget = liftMedium;
+        liftmotor.setTargetPosition((int) liftTarget);
+        liftposition = liftmotor.getCurrentPosition();
+        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        if (liftTarget < liftposition){
+
+            liftPower=-1;
+        }
+        else{
+            liftPower=1;
+        }
+        liftmotor.setPower(liftPower);
+        return liftPower != 0;
+    }
+
+    public boolean liftLow(){
+        moving = true;
+//        intaking = true;
+        liftTarget = liftLow;
+        liftmotor.setTargetPosition((int) liftTarget);
+        liftposition = liftmotor.getCurrentPosition();
+        liftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        if (liftTarget < liftposition){
+
+            liftPower=-1;
+        }
+        else{
+            liftPower=1;
+        }
+        liftmotor.setPower(liftPower);
+        return liftPower != 0;
+    }
 //    public boolean liftOff(){
 //        moving = true;
 ////        intaking = true;
@@ -232,11 +232,11 @@ public class lift {
         }
         return false;
     }
-//    public double whereAmI()
-//    {
-//        liftposition = liftEncoder.getCurrentPosition();
-//        return liftposition;
-//    }
+    public double whereAmI()
+    {
+        liftposition = liftmotor.getCurrentPosition();
+        return liftposition;
+    }
     public boolean getLimit()
     {
         liftLimit = liftswitch.getState();
