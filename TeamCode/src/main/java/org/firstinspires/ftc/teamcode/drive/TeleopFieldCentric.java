@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.subsystems.intake;
 import org.firstinspires.ftc.teamcode.subsystems.lift;
 import org.firstinspires.ftc.teamcode.subsystems.turret;
 
-@TeleOp(name="TeleopNoAssist", group="Iterative Opmode")
+@TeleOp(name="TeleopFieldCentricBATTERYHOLDERSIDESHOULDNBENEARYOU", group="Iterative Opmode")
 
 public class TeleopFieldCentric extends OpMode
 {
@@ -113,12 +113,13 @@ public class TeleopFieldCentric extends OpMode
         telemetry.addData("angle error", error);
         telemetry.addData("IMU", imu.getAngularOrientation().firstAngle);
         telemetry.addData("botheading", Math.toDegrees(botHeading));
+        telemetry.addData("Claw Closed?", isClosed);
 //        telemetry.addData("Turret Encoder Position" , Turret.whereAmI());
 //        telemetry.addData("Lift Encoder Position" , Lift.whereAmI());
         telemetry.addData("Horizontal", Horizontal.getPosition());
         telemetry.update();
 
-        double x = -gamepad1.left_stick_y * 1.17; // Remember, this is reversed!
+        double x = -gamepad1.left_stick_y * 1.17; // Correct for imperfect Strafing
         double y = -gamepad1.left_stick_x;
         double rot = gamepad1.right_stick_x;        
 
