@@ -12,7 +12,6 @@ import com.qualcomm.robotcore.hardware.Servo
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit
 import org.firstinspires.ftc.teamcode.movement.GAmovementKotlinRewrite
-import org.firstinspires.ftc.teamcode.subsystems.CenterStageDetection
 import org.firstinspires.ftc.teamcode.subsystems.CenterStageDetection.ColorDetected
 import org.firstinspires.ftc.teamcode.subsystems.intake
 import org.firstinspires.ftc.teamcode.subsystems.lift
@@ -25,13 +24,13 @@ import org.openftc.easyopencv.OpenCvCameraFactory
 import org.openftc.easyopencv.OpenCvCameraRotation
 import org.openftc.easyopencv.OpenCvInternalCamera
 
-//import org.firstinspires.ftc.teamcode.subsystems.CenterStageDetection;
+import org.firstinspires.ftc.teamcode.subsystems.CenterStageDetection;
 @Autonomous
 class AutoCenterStage : LinearOpMode() {
     var isLeft = false
     var isMiddle = false
     var isRight = false
-    //val tagProcessor = AprilTagProcessor.easyCreateWithDefaults()
+    val tagProcessor = AprilTagProcessor.easyCreateWithDefaults()
     var runAut = false
     override fun runOpMode() {
         val detector = CenterStageDetection()
@@ -80,8 +79,8 @@ class AutoCenterStage : LinearOpMode() {
         );
         waitForStart()
 
-//        val camera1 = hardwareMap.get(WebcamName::class.java, "Webcam 1")
-//        val portal = VisionPortal.easyCreateWithDefaults(camera1, tagProcessor)
+        val camera1 = hardwareMap.get(WebcamName::class.java, "Webcam 1")
+        val portal = VisionPortal.easyCreateWithDefaults(camera1, tagProcessor)
         var i = 0
         while (!isStopRequested) {
             colorLeft = detector.colorLeft
@@ -105,24 +104,24 @@ class AutoCenterStage : LinearOpMode() {
             i++
         }
 
-//        if (isLeft) {
-//            // Movements for left spot
-//            telemetry.addData("Position", "Left");
-//            telemetry.update();
-//            sleep(20000);
-//        }
-//        else if (isMiddle) {
-//            // Movements for center spot
-//            telemetry.addData("Position", "Right");
-//            telemetry.update();
-//            sleep(20000);
-//        }
-//        else {
-//            // Movements for right spot
-//            telemetry.addData("Position", "Middle");
-//            telemetry.update();
-//            sleep(20000);
-//        }
+        if (isLeft) {
+            // Movements for left spot
+            telemetry.addData("Position", "Left");
+            telemetry.update();
+            sleep(20000);
+        }
+        else if (isMiddle) {
+            // Movements for center spot
+            telemetry.addData("Position", "Right");
+            telemetry.update();
+            sleep(20000);
+        }
+        else {
+            // Movements for right spot
+            telemetry.addData("Position", "Middle");
+            telemetry.update();
+            sleep(20000);
+        }
     }
 }
 
@@ -172,32 +171,32 @@ internal class Move(
     }
 
     override fun autoConstructor(t: Int): Boolean {
-//        loc = 1
-//        val tag: Int = when (loc) {
-//            1 -> 1
-//            0 -> 2
-//            -1 -> 3
-//            else -> 0
-//        }
+        loc = 1
+        val tag: Int = when (loc) {
+            1 -> 1
+            0 -> 2
+            -1 -> 3
+            else -> 0
+        }
 
-//        var detections: List<AprilTagDetection?>? = a.tagProcessor.detections.ifEmpty {
-//            null
-//        }
-//        var detect = detections?.get(0)
-//        var dPose = detections?.get(0)?.ftcPose
-//        var detected = false
-//        if (detections != null) {
-//            for (detection in detections) {
-//                val pose = detection?.ftcPose
-//                if (detection != null) {
-//                    if (detection.id == tag) {
-//                        detect = detection
-//                        dPose = pose
-//                        detected = true
-//                    }
-//                }
-//            }
-//        }
+        var detections: List<AprilTagDetection?>? = a.tagProcessor.detections.ifEmpty {
+            null
+        }
+        var detect = detections?.get(0)
+        var dPose = detections?.get(0)?.ftcPose
+        var detected = false
+        if (detections != null) {
+            for (detection in detections) {
+                val pose = detection?.ftcPose
+                if (detection != null) {
+                    if (detection.id == tag) {
+                        detect = detection
+                        dPose = pose
+                        detected = true
+                    }
+                }
+            }
+        }
         var tpi = 1800
         when (t) {
             0 -> {
